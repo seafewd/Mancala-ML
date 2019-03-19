@@ -1,11 +1,18 @@
 class Game {
-    Player player1 = new Player();
-    Player player2 = new Player();
+    Player player1;
+    Player player2;
+	List<Field> fieldList;
 
-    boolean makeTurn(chosenFieldIndex) {
+	public Game(fieldList) {
+		this.fieldList = new ArrayList<>(0, 2, 3);
+		this.player1 = new Player();
+		this.player2 = new Player();
+	}
+
+    boolean makeTurn(fieldIndex) {
         boolean oneMoreTurn = false;
 
-        stonesInField = fieldList(a).getStones();
+        stonesInField = fieldList(chosenFieldIndex).getStones();
         fieldList(chosenFieldIndex).empty();
         for(i = 1; i <= stonesInField; i++) {
             fieldList(chosenFieldIndex + i).increment();
