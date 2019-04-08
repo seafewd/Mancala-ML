@@ -41,17 +41,17 @@ class Board():
         self.fieldList[7].setNumberOfStones(0)
 
     def toString(self):
-        string = "   "
+        string = "     "
         for i in range(13, 8, -1):
             string = string + str(self.fieldList[i].getNumberOfStones()) + " - "
         
         string = string + str(self.fieldList[8].getNumberOfStones())
         
-        string = string + "\n" \
+        string = string + "\n  " \
         + str(self.fieldList[0].getNumberOfStones()) \
         + "                         " \
         + str(self.fieldList[7].getNumberOfStones()) \
-        + "\n   "
+        + "\n     "
 
         for i in range(1, 6):
             string = string + str(self.fieldList[i].getNumberOfStones()) + " - "
@@ -86,7 +86,12 @@ def printHelp():
     print ("-n: Start a new game")
     print ("-r: Show game rules")
     print ("-h: Show this help")
-    print (">numberOfField<: Make a turn")
+    print ("[fieldIndex]: Make a turn")
+    print()
+    print ("    [13]-[12]-[11]-[10]-[09]-[08]")
+    print ("  X                               X")
+    print ("    [01]-[02]-[03]-[04]-[05]-[06]")
+    
     print ()
 
 
@@ -123,12 +128,12 @@ def makeMove(fieldIndex, player):
         i = i - 1
     lastFieldIndex = (fieldIndex+numberOfStones)%14
     if(player==1 and lastFieldIndex==7):
-        print("-----> One more turn!")
+        print("--> One more turn!")
         return 1
     elif (player==1):
         return 2
     if(player==2 and lastFieldIndex==0):
-        print("-----> One more turn!")
+        print("--> One more turn!")
         return 2
     elif (player==2):
         return 1
